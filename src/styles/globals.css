@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================
+   CSS VARIABLES - Design Tokens
+   ========================================= */
+:root {
+  --color-green: #39ff14;
+  --color-green-dark: #22c55e;
+  --color-green-dim: #16a34a;
+  --color-green-muted: rgba(57, 255, 20, 0.15);
+  --color-green-border: rgba(57, 255, 20, 0.25);
+  --color-bg: #050a05;
+  --color-bg-dark: #030703;
+  --color-card: #0a150a;
+  --color-card-hover: #0d1a0d;
+  --color-border: rgba(57, 255, 20, 0.2);
+  --color-text: #e2f5e2;
+  --color-text-muted: rgba(226, 245, 226, 0.6);
+  --font-heading: 'Rajdhani', sans-serif;
+  --font-body: 'Exo 2', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+  --glow-sm: 0 0 10px rgba(57, 255, 20, 0.4);
+  --glow-md: 0 0 20px rgba(57, 255, 20, 0.5), 0 0 40px rgba(57, 255, 20, 0.2);
+  --glow-lg: 0 0 30px rgba(57, 255, 20, 0.6), 0 0 60px rgba(57, 255, 20, 0.3), 0 0 100px rgba(57, 255, 20, 0.1);
+}
+
+/* =========================================
+   BASE RESET & GLOBAL STYLES
+   ========================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================
+   TYPOGRAPHY UTILITIES
+   ========================================= */
+.font-heading { font-family: var(--font-heading); }
+.font-body    { font-family: var(--font-body); }
+.font-mono    { font-family: var(--font-mono); }
+
+/* =========================================
+   GLOW EFFECTS
+   ========================================= */
+.glow-text {
+  color: var(--color-green);
+  text-shadow: var(--glow-sm);
+}
+.glow-text-lg {
+  color: var(--color-green);
+  text-shadow: var(--glow-md);
+  animation: glowPulse 2s ease-in-out infinite alternate;
+}
+.glow-border {
+  border-color: var(--color-green);
+  box-shadow: var(--glow-sm);
+}
+
+/* =========================================
+   GRID BACKGROUND
+   ========================================= */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(57, 255, 20, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 20, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* =========================================
+   CARD COMPONENTS
+   ========================================= */
+.tech-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.tech-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(57, 255, 20, 0.05), transparent 60%);
+  pointer-events: none;
+}
+.tech-card:hover {
+  border-color: rgba(57, 255, 20, 0.5);
+  box-shadow: var(--glow-sm), inset 0 0 30px rgba(57, 255, 20, 0.03);
+  transform: translateY(-2px);
+}
+
+/* Corner decorations */
+.tech-card-corner::after,
+.tech-card-corner::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--color-green);
+  border-style: solid;
+}
+.tech-card-corner::before {
+  top: 0; left: 0;
+  border-width: 2px 0 0 2px;
+}
+.tech-card-corner::after {
+  bottom: 0; right: 0;
+  border-width: 0 2px 2px 0;
+}
+
+/* =========================================
+   SCAN LINE EFFECT
+   ========================================= */
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.15), transparent);
+  animation: scanMove 8s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* =========================================
+   MATRIX RAIN (decorative)
+   ========================================= */
+.matrix-column {
+  position: absolute;
+  top: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-green);
+  opacity: 0.07;
+  animation: matrixFall linear infinite;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* =========================================
+   BUTTON STYLES
+   ========================================= */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: var(--color-green);
+  color: #050a05;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background: #4dff2a;
+  box-shadow: var(--glow-md);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: var(--color-green);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-green);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+.btn-outline:hover {
+  background: rgba(57, 255, 20, 0.1);
+  box-shadow: var(--glow-sm);
+}
+
+/* =========================================
+   SECTION DIVIDER
+   ========================================= */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-green), transparent);
+  margin: 0 auto;
+  opacity: 0.4;
+}
+
+/* =========================================
+   PRICE TAG
+   ========================================= */
+.price-tag {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  color: var(--color-green);
+  text-shadow: var(--glow-lg);
+  line-height: 1;
+}
+
+/* =========================================
+   ICON CONTAINER
+   ========================================= */
+.icon-container {
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(57, 255, 20, 0.05);
+  position: relative;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* =========================================
+   KEYFRAME ANIMATIONS
+   ========================================= */
+@keyframes glowPulse {
+  0%   { text-shadow: 0 0 10px rgba(57,255,20,0.5); }
+  100% { text-shadow: 0 0 20px rgba(57,255,20,0.9), 0 0 40px rgba(57,255,20,0.5), 0 0 60px rgba(57,255,20,0.2); }
+}
+
+@keyframes scanMove {
+  0%   { top: -2px; opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { top: 100vh; opacity: 0; }
+}
+
+@keyframes matrixFall {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(57,255,20,0.2); }
+  50%       { border-color: rgba(57,255,20,0.6); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* =========================================
+   ANIMATION UTILITIES
+   ========================================= */
+.animate-float       { animation: float 6s ease-in-out infinite; }
+.animate-fade-in-up  { animation: fadeInUp 0.6s ease forwards; }
+.animate-fade-in-left { animation: fadeInLeft 0.6s ease forwards; }
+.animate-border-pulse { animation: borderPulse 3s ease-in-out infinite; }
+
+/* Staggered delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* =========================================
+   SCROLLBAR CUSTOMIZATION
+   ========================================= */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-green-dim);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-green); }
+
+/* =========================================
+   SELECTION
+   ========================================= */
+::selection {
+  background: rgba(57, 255, 20, 0.25);
+  color: var(--color-text);
+}
+
+/* =========================================
+   RESPONSIVE UTILITIES
+   ========================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
