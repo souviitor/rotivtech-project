@@ -50,13 +50,12 @@ export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Share+Tech+Mono&display=swap"
           rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Share+Tech+Mono&display=swap"
         />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className="bg-grid antialiased" style={{ backgroundSize: '50px 50px' }}>
-        {/* Scan line effect — purely decorative, hidden from AT */}
         <div className="scanline" aria-hidden="true" />
         {children}
       </body>

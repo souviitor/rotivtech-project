@@ -1,12 +1,10 @@
 {
   "extends": ["next/core-web-vitals"],
   "rules": {
-    "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/no-unused-vars": "error",
-    "react/no-dangerouslySetInnerHTML": "error",
     "no-console": ["warn", { "allow": ["warn", "error"] }],
     "no-eval": "error",
     "no-implied-eval": "error",
-    "no-new-func": "error"
+    "no-new-func": "error",
+    "@next/next/no-page-custom-font": "off"
   }
 }

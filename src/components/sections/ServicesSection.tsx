@@ -98,7 +98,7 @@ export default function ServicesSection(): JSX.Element {
             className="text-xs tracking-[0.4em] uppercase mb-3"
             style={{ color: '#39FF14', fontFamily: 'Share Tech Mono, monospace' }}
           >
-            // O que fazemos
+            {'// O que fazemos'}
           </p>
           <h2
             id="services-heading"
