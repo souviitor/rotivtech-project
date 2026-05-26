@@ -377,18 +377,7 @@ npm audit
 
 # Corrigir automaticamente
 npm audit fix
-```
 
-### Checklist de deploy
-
-- [ ] `npm run type-check` — sem erros TypeScript
-- [ ] `npm run lint` — sem warnings críticos
-- [ ] `npm run build` — build bem-sucedido
-- [ ] Variáveis de ambiente configuradas no servidor
-- [ ] HTTPS configurado (obrigatório para HSTS)
-- [ ] Testar no Lighthouse (target: 90+ em todas as métricas)
-
----
 
 ## 🚀 Roadmap e Melhorias Futuras
 
@@ -416,7 +405,7 @@ npm audit fix
 
 ## 📄 Licença
 
-© 2024 Rotiv Tech. Todos os direitos reservados.
+© 2026 Rotiv Tech. Todos os direitos reservados.
 
 Este projeto é proprietário. Não é permitida a distribuição, cópia ou uso sem autorização expressa.
 
