@@ -2,7 +2,9 @@
   "name": "rotivtech",
   "version": "1.0.0",
   "private": true,
-  "engines": {"node": ">=20"},
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -19,6 +21,7 @@
     "next": "14.2.30",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "sharp": "^0.34.5",
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
